@@ -11,7 +11,7 @@
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@loaders.gl/gltf@2.3.14/dist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script> <!-- Đảm bảo nạp GLTFLoader từ source này -->
     <script>
         // Setup scene, camera, and renderer
         const scene = new THREE.Scene();
@@ -21,8 +21,8 @@
         document.body.appendChild(renderer.domElement);
 
         // Load the GLTF/GLB model
-        const loader = new THREE.GLTFLoader();
-        loader.load('./InteriorTest.glb', function (gltf) {  // Sử dụng đường dẫn tương đối
+        const loader = new THREE.GLTFLoader(); // Sử dụng GLTFLoader đã được nạp từ CDN
+        loader.load('./InteriorTest.glb', function (gltf) { 
             scene.add(gltf.scene);
             camera.position.z = 5;
 
