@@ -20,11 +20,12 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(renderer.domElement);
 
-        // Load the GLTF model
+        // Load the GLTF/GLB model
         const loader = new THREE.GLTFLoader();
-        loader.load('F:/EoH Company/3DHomeBlender/InteriorTest.glb', function (gltf) {
+        loader.load('./InteriorTest.glb', function (gltf) {  // Sử dụng đường dẫn tương đối
             scene.add(gltf.scene);
             camera.position.z = 5;
+
             const animate = function () {
                 requestAnimationFrame(animate);
                 gltf.scene.rotation.y += 0.01; // Rotate model for demonstration
@@ -32,7 +33,7 @@
             };
             animate();
         }, undefined, function (error) {
-            console.error(error);
+            console.error('An error occurred while loading the model:', error);
         });
 
         window.addEventListener('resize', function () {
